@@ -1,6 +1,6 @@
-import 'package:crypto_please_conv/modal/coin.dart';
-import 'package:crypto_please_conv/repo/coin_repo.dart';
-import 'package:crypto_please_conv/services/api.dart';
+import 'package:conflow/modal/coin.dart';
+import 'package:conflow/repo/coin_repo.dart';
+import 'package:conflow/services/api.dart';
 import 'package:dio/dio.dart';
 
 const coinsList = {

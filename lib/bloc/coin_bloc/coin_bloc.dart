@@ -1,5 +1,5 @@
-import 'package:crypto_please_conv/modal/coin.dart';
-import 'package:crypto_please_conv/repo/coin_repo.dart';
+import 'package:conflow/modal/coin.dart';
+import 'package:conflow/repo/coin_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

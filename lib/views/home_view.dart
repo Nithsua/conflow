@@ -1,7 +1,7 @@
-import 'package:crypto_please_conv/bloc/coin_bloc/coin_bloc.dart';
-import 'package:crypto_please_conv/views/convert_view.dart';
-import 'package:crypto_please_conv/views/helper/connection_error_helper.dart';
-import 'package:crypto_please_conv/views/helper/loading_helper.dart';
+import 'package:conflow/bloc/coin_bloc/coin_bloc.dart';
+import 'package:conflow/views/convert_view.dart';
+import 'package:conflow/views/helper/connection_error_helper.dart';
+import 'package:conflow/views/helper/loading_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

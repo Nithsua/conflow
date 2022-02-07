@@ -1,5 +1,5 @@
-import 'package:crypto_please_conv/bloc/coin_bloc/coin_bloc.dart';
-import 'package:crypto_please_conv/modal/coin.dart';
+import 'package:conflow/bloc/coin_bloc/coin_bloc.dart';
+import 'package:conflow/modal/coin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

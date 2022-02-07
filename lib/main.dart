@@ -1,6 +1,6 @@
-import 'package:crypto_please_conv/bloc/coin_bloc/coin_bloc.dart';
-import 'package:crypto_please_conv/services/coin_service.dart';
-import 'package:crypto_please_conv/views/home_view.dart';
+import 'package:conflow/bloc/coin_bloc/coin_bloc.dart';
+import 'package:conflow/services/coin_service.dart';
+import 'package:conflow/views/home_view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
