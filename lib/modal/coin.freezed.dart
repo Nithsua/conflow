@@ -132,6 +132,28 @@ class _$_Coin extends _Coin {
   @override
   final double price;
 
+  @override
+  String toString() {
+    return 'Coin(id: $id, name: $name, price: $price)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Coin &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.price, price));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(price));
+
   @JsonKey(ignore: true)
   @override
   _$CoinCopyWith<_Coin> get copyWith =>
