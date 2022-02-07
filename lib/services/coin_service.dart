@@ -1,5 +1,6 @@
 import 'package:crypto_please_conv/modal/coin.dart';
 import 'package:crypto_please_conv/repo/coin_repo.dart';
+import 'package:crypto_please_conv/services/api.dart';
 import 'package:dio/dio.dart';
 
 const coinsList = {
@@ -21,18 +22,12 @@ class CoinService extends CoinRepository {
     });
 
     final coins = <Coin>[];
-
     try {
-      final response = await Dio(
-        BaseOptions(queryParameters: {
-          'ids': coinIds,
-          'vs_currencies': 'usd',
-        }),
-      ).get(baseUrl + 'simple/price');
+      final dio = Dio();
+      final client = APIClient(dio);
+      final data = await client.getTasks(coinIds, 'usd');
 
-      final data = response.data as Map<String, dynamic>;
-
-      data.forEach((key, value) {
+      data.toJson().forEach((key, value) {
         coins.add(Coin.fromJSON(
             {'id': key, 'name': coinsList[key], 'price': value['usd']}));
       });
