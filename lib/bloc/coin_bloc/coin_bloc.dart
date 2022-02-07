@@ -14,11 +14,12 @@ class CoinBloc extends Bloc<CoinEvent, CoinState> {
   CoinBloc({required this.coinRepository}) : super(const Loading()) {
     on<CoinFetch>((_, emit) async {
       if (state is Failed) emit(const Loading());
-      await coinRepository.getCoinList().then((data) {
+      try {
+        final data = await coinRepository.getCoinList();
         emit(Data(coins: data));
-      }, onError: (error, _) {
-        emit(Failed(error: error));
-      });
+      } catch (error) {
+        if (state is! Data) emit(Failed(error: error));
+      }
     });
   }
 }

@@ -34,43 +34,47 @@ class _HomeViewState extends State<HomeView> {
                 return RefreshIndicator(
                   onRefresh: () async =>
                       context.read<CoinBloc>().add(CoinFetch()),
-                  child: ListView.builder(
-                      physics: const BouncingScrollPhysics(
-                          parent: AlwaysScrollableScrollPhysics()),
-                      itemCount: data.length,
-                      itemBuilder: ((context, index) {
-                        final coin = data[index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: ListTile(
-                            onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => ConvertView(
-                                          coinId: coin.id,
-                                        ))),
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  color: Colors.grey, width: 0.0),
-                              borderRadius: BorderRadius.vertical(
-                                  top: index == 0
-                                      ? const Radius.circular(10.0)
-                                      : Radius.zero,
-                                  bottom: index == data.length - 1
-                                      ? const Radius.circular(10.0)
-                                      : Radius.zero),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: ListView.builder(
+                        physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics()),
+                        itemCount: data.length,
+                        itemBuilder: ((context, index) {
+                          final coin = data[index];
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: ListTile(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => ConvertView(
+                                            coinId: coin.id,
+                                          ))),
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                    color: Colors.grey, width: 0.0),
+                                borderRadius: BorderRadius.vertical(
+                                    top: index == 0
+                                        ? const Radius.circular(10.0)
+                                        : Radius.zero,
+                                    bottom: index == data.length - 1
+                                        ? const Radius.circular(10.0)
+                                        : Radius.zero),
+                              ),
+                              title: Text(coin.name),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text('\$${coin.price.toStringAsFixed(2)}'),
+                                  const Icon(Icons.keyboard_arrow_right)
+                                ],
+                              ),
                             ),
-                            title: Text(coin.name),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text('\$${coin.price.toStringAsFixed(2)}'),
-                                const Icon(Icons.keyboard_arrow_right)
-                              ],
-                            ),
-                          ),
-                        );
-                      })),
+                          );
+                        })),
+                  ),
                 );
               });
         },

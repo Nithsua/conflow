@@ -20,19 +20,25 @@ class CoinService extends CoinRepository {
       coinIds += '$key,';
     });
 
-    final response = await Dio(
-      BaseOptions(queryParameters: {
-        'ids': coinIds,
-        'vs_currencies': 'usd',
-      }),
-    ).get(baseUrl + 'simple/price');
-
-    final data = response.data as Map<String, dynamic>;
     final coins = <Coin>[];
-    data.forEach((key, value) {
-      coins.add(Coin.fromJSON(
-          {'id': key, 'name': coinsList[key], 'price': value['usd']}));
-    });
+
+    try {
+      final response = await Dio(
+        BaseOptions(queryParameters: {
+          'ids': coinIds,
+          'vs_currencies': 'usd',
+        }),
+      ).get(baseUrl + 'simple/price');
+
+      final data = response.data as Map<String, dynamic>;
+
+      data.forEach((key, value) {
+        coins.add(Coin.fromJSON(
+            {'id': key, 'name': coinsList[key], 'price': value['usd']}));
+      });
+    } catch (_) {
+      rethrow;
+    }
     return coins;
   }
 }

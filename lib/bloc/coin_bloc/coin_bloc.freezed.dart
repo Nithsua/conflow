@@ -22,7 +22,7 @@ class _$CoinStateTearOff {
     return const Loading();
   }
 
-  Failed error({required Error error}) {
+  Failed error({required Object error}) {
     return Failed(
       error: error,
     );
@@ -43,21 +43,21 @@ mixin _$CoinState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Error error) error,
+    required TResult Function(Object error) error,
     required TResult Function(List<Coin> coins) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
     required TResult orElse(),
   }) =>
@@ -140,7 +140,7 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Error error) error,
+    required TResult Function(Object error) error,
     required TResult Function(List<Coin> coins) data,
   }) {
     return loading();
@@ -150,7 +150,7 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
   }) {
     return loading?.call();
@@ -160,7 +160,7 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
     required TResult orElse(),
   }) {
@@ -213,7 +213,7 @@ abstract class Loading implements CoinState {
 abstract class $FailedCopyWith<$Res> {
   factory $FailedCopyWith(Failed value, $Res Function(Failed) then) =
       _$FailedCopyWithImpl<$Res>;
-  $Res call({Error error});
+  $Res call({Object error});
 }
 
 /// @nodoc
@@ -233,7 +233,7 @@ class _$FailedCopyWithImpl<$Res> extends _$CoinStateCopyWithImpl<$Res>
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as Error,
+              as Object,
     ));
   }
 }
@@ -244,7 +244,7 @@ class _$Failed implements Failed {
   const _$Failed({required this.error});
 
   @override
-  final Error error;
+  final Object error;
 
   @override
   String toString() {
@@ -272,7 +272,7 @@ class _$Failed implements Failed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Error error) error,
+    required TResult Function(Object error) error,
     required TResult Function(List<Coin> coins) data,
   }) {
     return error(this.error);
@@ -282,7 +282,7 @@ class _$Failed implements Failed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
   }) {
     return error?.call(this.error);
@@ -292,7 +292,7 @@ class _$Failed implements Failed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
     required TResult orElse(),
   }) {
@@ -338,9 +338,9 @@ class _$Failed implements Failed {
 }
 
 abstract class Failed implements CoinState {
-  const factory Failed({required Error error}) = _$Failed;
+  const factory Failed({required Object error}) = _$Failed;
 
-  Error get error;
+  Object get error;
   @JsonKey(ignore: true)
   $FailedCopyWith<Failed> get copyWith => throw _privateConstructorUsedError;
 }
@@ -408,7 +408,7 @@ class _$Data implements Data {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Error error) error,
+    required TResult Function(Object error) error,
     required TResult Function(List<Coin> coins) data,
   }) {
     return data(coins);
@@ -418,7 +418,7 @@ class _$Data implements Data {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
   }) {
     return data?.call(coins);
@@ -428,7 +428,7 @@ class _$Data implements Data {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Error error)? error,
+    TResult Function(Object error)? error,
     TResult Function(List<Coin> coins)? data,
     required TResult orElse(),
   }) {
