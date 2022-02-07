@@ -1,6 +1,7 @@
 import 'package:crypto_please_conv/bloc/coin_bloc/coin_bloc.dart';
 import 'package:crypto_please_conv/modal/coin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConvertView extends StatefulWidget {
@@ -16,11 +17,11 @@ class _ConvertViewState extends State<ConvertView> {
   final TextEditingController _coinEditingController = TextEditingController();
   late final TextEditingController _usdEditingController =
       TextEditingController();
+  Coin? coin;
 
   @override
   void initState() {
     super.initState();
-    Coin? coin;
     (context.read<CoinBloc>().state.mapOrNull(data: (data) {
       for (var i in data.coins) {
         if (i.id == widget.coinId) {
@@ -57,11 +58,12 @@ class _ConvertViewState extends State<ConvertView> {
 
   final _textFieldTheme = InputDecoration(
     filled: true,
-    fillColor: Colors.grey,
+    fillColor: Colors.grey.shade200,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10.0),
       borderSide: BorderSide.none,
     ),
+    counter: const Offstage(),
   );
 
   @override
@@ -70,7 +72,7 @@ class _ConvertViewState extends State<ConvertView> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Convertio',
+          'Conflow',
         ),
       ),
       body: Padding(
@@ -78,15 +80,30 @@ class _ConvertViewState extends State<ConvertView> {
         child: Column(
           children: [
             TextField(
+              keyboardType: TextInputType.number,
+              maxLength: 10,
+              maxLengthEnforcement: MaxLengthEnforcement.enforced,
               onChanged: (value) => calculateExchangeRate(value, 0),
               controller: _coinEditingController,
-              decoration: _textFieldTheme,
+              decoration: _textFieldTheme.copyWith(
+                  prefix: Padding(
+                padding: const EdgeInsets.only(right: 20.0),
+                child: Text(coin?.name ?? ""),
+              )),
             ),
             const SizedBox(height: 30),
             TextField(
+              keyboardType: TextInputType.number,
+              maxLength: 10,
+              maxLengthEnforcement: MaxLengthEnforcement.enforced,
               onChanged: (value) => calculateExchangeRate(value, 1),
               controller: _usdEditingController,
-              decoration: _textFieldTheme,
+              decoration: _textFieldTheme.copyWith(
+                prefix: const Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: Text('USD'),
+                ),
+              ),
             ),
           ],
         ),
